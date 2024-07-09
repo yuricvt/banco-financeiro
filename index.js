@@ -2,27 +2,29 @@
 
 var prompt = require('prompt-sync')();
 
-const cpfs = ["08341569469", "11111111111"];
+const usuarios = [{ nome: "Alexandre", sobrenome: "Lins", idade: 34, cpf: "08341569469", saldo: 0},
+{ nome: "Outro", sobrenome: "User", idade: 16, cpf: "11111111111", saldo: 0}];   // Lista de usuários
 
-let login = false
+let login = false   // Condição para efetuar login
 
-let opcao = 0
+let opcao = 0   //Opção selecionada no menu
 
-function getLogin() {
+// Funções 
+
+function getLogin(user) {    // Função de Login
 
     console.log("     Digite seu CPF para acessar...")
     let cpf = prompt("     ")
-    
 
-    if (cpfs.includes(cpf)) {
+    if (user.cpf === cpf) {
         console.log()
         console.log()
         console.log()
-        console.log("          Bem Vindo ")
+        console.log("          Bem Vindo ", user.nome + " " + user.sobrenome)
         console.log()
         console.log()
         console.log()
-        
+
         return login = true
 
     } else {
@@ -33,10 +35,9 @@ function getLogin() {
         return login = false
 
     }
-
 }
 
-function mainMenu() {
+function mainMenu() {   // Função do Menu Inicial
     console.log("          Escolha a opção da operação:")
     console.log()
     console.log()
@@ -48,9 +49,11 @@ function mainMenu() {
     console.log("          6 - Atendimento")
     console.log()
     console.log()
-    
+
     return opcao = prompt("          ")
 }
+
+// Saudação
 
 console.log()
 console.log()
@@ -63,13 +66,15 @@ console.log()
 console.log()
 console.log()
 
+usuarios.forEach((user) => {
+    getLogin(user)
+
+    while (!login) {
+        getLogin(user)
+    }
+
+    mainMenu()
+})
 
 
-getLogin()
-
-while (!login) {
-    getLogin()
-}
-
-mainMenu()
 
