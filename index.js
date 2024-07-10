@@ -118,6 +118,117 @@ function showingBalance(usuario) {   // Função de Consulta do Saldo
     console.log()
 }
 
+function transfering(usuario) {   // Função de Transferência
+    console.log()
+    console.log()
+    console.log()
+    console.log()
+    console.log("          Transferência")
+    console.log()
+    console.log()
+    console.log("          Indique o valor a ser transferido em Reais")
+    console.log("          ex. 100.00")
+    console.log()
+    console.log()
+    console.log()
+    const transferencia = prompt("          ")
+    console.log()
+    console.log()
+    console.log("          Informe o cpf do títular da conta a ser transferido o valor")
+    console.log()
+    console.log()
+    console.log()
+    const cpfRecebedor = prompt("          ")
+
+    const usuarioRecebedor = usuarios.find((user) => user.cpf === cpfRecebedor);
+
+    if (usuarioRecebedor) {
+        console.log()
+        console.log()
+        console.log("          Você confirma a tranferência de R$ " + transferencia + " para " + usuarioRecebedor.nome + " " + usuarioRecebedor.sobrenome)
+        console.log()
+        console.log("          Digite “sim” ou “não” para continuar")
+        console.log()
+        const confirmacao = prompt("          ")
+
+        if (confirmacao === "sim" && transferencia < usuario.saldo) {
+            return usuario.saldo = (+usuario.saldo) - (+transferencia)
+        }
+
+        if (transferencia > usuario.saldo) {
+            return (
+                console.log(),
+                console.log(),
+                console.log(),
+                console.log("          Saldo insuficiente...")
+            )
+        }
+    } else {
+        console.log()
+        console.log()
+        console.log()
+        console.log()
+        console.log("          Usuário não encontrado... ")
+        console.log()
+        console.log()
+    }
+}
+
+function getLoan(usuario) {   // Função de Empréstimo
+    console.log()
+    console.log()
+    console.log()
+    console.log()
+    console.log("          Deseja contratar um empréstimo?")
+    console.log()
+    console.log()
+    console.log("          Digite “sim” ou “não” para continuar")
+    console.log()
+    const confirmacao = prompt("          ")
+
+    if (confirmacao === "sim" && usuario.idade >= 18) {
+        console.log()
+        console.log()
+        console.log("          Insira o valor que você gostaria de receber")
+        console.log()
+        const emprestimo = prompt("          ")
+        console.log()
+        console.log()
+        console.log("          Você confirma a solicitação de emprestimo de R$ " + emprestimo)
+        console.log()
+        console.log("          Digite “sim” ou “não” para continuar")
+        console.log()
+        const confirmacao = prompt("          ")
+
+        if (confirmacao === "sim") {
+            return usuario.saldo = (+usuario.saldo) + (+emprestimo)
+        }
+
+    } else {
+        console.log()
+        console.log()
+        console.log()
+        console.log("          Você precisa ter maior idade para pedir emprestimos :(")
+        console.log()
+        console.log()
+    }
+
+}
+
+function getContacts() {
+    console.log()
+    console.log()
+    console.log("          Nossos Contatos")
+    console.log()
+    console.log()
+    console.log("          Site: www.bancog.com ")
+    console.log()
+    console.log("          Whatsapp: 11 99999-9999")
+    console.log()
+    console.log("          Telefone: 0800 800 0008")
+    console.log()
+}
+
 function menuRouter(opcao) {   // Função de Roteamento do Menu
     if (opcao === "1") {
         return depositing(usuario)
@@ -130,6 +241,18 @@ function menuRouter(opcao) {   // Função de Roteamento do Menu
     if (opcao === "3") {
         return showingBalance(usuario)
     }
+
+    if (opcao === "4") {
+        return transfering(usuario)
+    }
+
+    if (opcao === "5") {
+        return getLoan(usuario)
+    }
+
+    if (opcao === "6") {
+        return getContacts()
+    }
 }
 
 function returning(opcao) {   // Função de Retorno ao Menu
@@ -137,8 +260,6 @@ function returning(opcao) {   // Função de Retorno ao Menu
     if (opcao === "7") {
         return sair = true
     } else {
-        console.log()
-        console.log()
         console.log()
         console.log()
         console.log()
@@ -155,9 +276,7 @@ function returning(opcao) {   // Função de Retorno ao Menu
             return sair = true
         }
     }
-
 }
-
 
 function app() {   // Aplicação
 
@@ -204,3 +323,4 @@ function app() {   // Aplicação
 }
 
 app()
+
