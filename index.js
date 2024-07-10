@@ -1,5 +1,3 @@
-// Estilos: Títulos com 10 espaços, demais espaçamentos 5.
-
 var prompt = require('prompt-sync')();
 
 const usuarios = [{ nome: "Alexandre", sobrenome: "Lins", idade: 34, cpf: "08341569469", saldo: 0 },
@@ -13,6 +11,18 @@ let sair = false //Opção de saida do sistema
 
 // Funções 
 
+function fourSpacing() {   // Espaçamento de 4 linhas
+    console.log()
+    console.log()
+    console.log()
+    console.log()
+}
+
+function twoSpacing() {   // Espaçamento de 2 linhas
+    console.log()
+    console.log()
+}
+
 function getLogin() {    // Função de Login
 
     console.log()
@@ -24,11 +34,9 @@ function getLogin() {    // Função de Login
 }
 
 function mainMenu() {   // Função do Menu Inicial
-    console.log()
-    console.log()
+    twoSpacing()
     console.log("          Escolha a opção da operação:")
-    console.log()
-    console.log()
+    twoSpacing()
     console.log("          1 - Depósito")
     console.log("          2 - Saque")
     console.log("          3 - Saldo")
@@ -36,27 +44,20 @@ function mainMenu() {   // Função do Menu Inicial
     console.log("          5 - Empréstimo")
     console.log("          6 - Atendimento")
     console.log("          7 - Sair")
-    console.log()
-    console.log()
+    twoSpacing()
 
     return opcao = prompt("          ")
 }
 
 function depositing(usuario) {   // Função de Deposito
-    console.log()
-    console.log()
-    console.log()
-    console.log()
+    fourSpacing()
     console.log("          Depósito")
-    console.log()
-    console.log()
+    twoSpacing()
     console.log("          Indique o valor a ser depositado em Reais")
     console.log("          ex. 1000.00")
-    console.log()
-    console.log()
+    twoSpacing()
     const deposito = prompt("          ")
-    console.log()
-    console.log()
+    twoSpacing()
     console.log("          Você confirma o valor R$ " + deposito)
     console.log()
     console.log("          Digite “sim” ou “não” para continuar")
@@ -69,21 +70,14 @@ function depositing(usuario) {   // Função de Deposito
 }
 
 function widrawing(usuario) {   // Função de Saque
-    console.log()
-    console.log()
-    console.log()
-    console.log()
+    fourSpacing()
     console.log("          Saque")
-    console.log()
-    console.log()
+    twoSpacing()
     console.log("          Indique o valor a ser sacado em Reais")
     console.log("          ex. 500.00")
-    console.log()
-    console.log()
-    console.log()
+    twoSpacing()
     const saque = prompt("          ")
-    console.log()
-    console.log()
+    twoSpacing()
     console.log("          Você confirma o valor R$ " + saque)
     console.log()
     console.log("          Digite “sim” ou “não” para continuar")
@@ -99,52 +93,39 @@ function widrawing(usuario) {   // Função de Saque
             console.log(),
             console.log(),
             console.log(),
-            console.log("          Saldo insuficiente...")
+            console.log(),
+            console.log("          Saldo insuficiente..."),
+            console.log(),
+            console.log()
         )
     }
 }
 
 function showingBalance(usuario) {   // Função de Consulta do Saldo
-    console.log()
-    console.log()
-    console.log()
-    console.log()
+    fourSpacing()
     console.log("          Saldo")
-    console.log()
-    console.log()
+    twoSpacing()
     console.log("          " + usuario.nome + ", o valor total em sua conta é R$ " + usuario.saldo)
-    console.log()
-    console.log()
-    console.log()
+    twoSpacing()
 }
 
 function transfering(usuario) {   // Função de Transferência
-    console.log()
-    console.log()
-    console.log()
-    console.log()
+    fourSpacing()
     console.log("          Transferência")
-    console.log()
-    console.log()
+    twoSpacing()
     console.log("          Indique o valor a ser transferido em Reais")
     console.log("          ex. 100.00")
-    console.log()
-    console.log()
-    console.log()
+    twoSpacing()
     const transferencia = prompt("          ")
-    console.log()
-    console.log()
+    twoSpacing()
     console.log("          Informe o cpf do títular da conta a ser transferido o valor")
-    console.log()
-    console.log()
-    console.log()
+    fourSpacing()
     const cpfRecebedor = prompt("          ")
 
     const usuarioRecebedor = usuarios.find((user) => user.cpf === cpfRecebedor);
 
     if (usuarioRecebedor) {
-        console.log()
-        console.log()
+        twoSpacing()
         console.log("          Você confirma a tranferência de R$ " + transferencia + " para " + usuarioRecebedor.nome + " " + usuarioRecebedor.sobrenome)
         console.log()
         console.log("          Digite “sim” ou “não” para continuar")
@@ -160,40 +141,33 @@ function transfering(usuario) {   // Função de Transferência
                 console.log(),
                 console.log(),
                 console.log(),
-                console.log("          Saldo insuficiente...")
+                console.log(),
+                console.log("          Saldo insuficiente..."),
+                console.log(),
+                console.log()
             )
         }
     } else {
-        console.log()
-        console.log()
-        console.log()
-        console.log()
+        fourSpacing()
         console.log("          Usuário não encontrado... ")
-        console.log()
-        console.log()
+        twoSpacing()
     }
 }
 
 function getLoan(usuario) {   // Função de Empréstimo
-    console.log()
-    console.log()
-    console.log()
-    console.log()
+    fourSpacing()
     console.log("          Deseja contratar um empréstimo?")
-    console.log()
-    console.log()
+    twoSpacing()
     console.log("          Digite “sim” ou “não” para continuar")
     console.log()
     const confirmacao = prompt("          ")
 
     if (confirmacao === "sim" && usuario.idade >= 18) {
-        console.log()
-        console.log()
+        twoSpacing()
         console.log("          Insira o valor que você gostaria de receber")
         console.log()
         const emprestimo = prompt("          ")
-        console.log()
-        console.log()
+        twoSpacing()
         console.log("          Você confirma a solicitação de emprestimo de R$ " + emprestimo)
         console.log()
         console.log("          Digite “sim” ou “não” para continuar")
@@ -205,22 +179,17 @@ function getLoan(usuario) {   // Função de Empréstimo
         }
 
     } else {
-        console.log()
-        console.log()
-        console.log()
+        fourSpacing()
         console.log("          Você precisa ter maior idade para pedir emprestimos :(")
-        console.log()
-        console.log()
+        twoSpacing()
     }
 
 }
 
 function getContacts() {
-    console.log()
-    console.log()
+    twoSpacing()
     console.log("          Nossos Contatos")
-    console.log()
-    console.log()
+    twoSpacing()
     console.log("          Site: www.bancog.com ")
     console.log()
     console.log("          Whatsapp: 11 99999-9999")
@@ -260,16 +229,12 @@ function returning(opcao) {   // Função de Retorno ao Menu
     if (opcao === "7") {
         return sair = true
     } else {
-        console.log()
-        console.log()
-        console.log()
-        console.log()
+        fourSpacing()
         console.log("          O que você deseja fazer agora?")
         console.log()
         console.log("          1 - Retornar ao Menu Principal")
         console.log("          2 - Sair")
-        console.log()
-        console.log()
+        twoSpacing()
         const retorno = prompt("          ")
 
         if (retorno === "2") {
@@ -280,37 +245,23 @@ function returning(opcao) {   // Função de Retorno ao Menu
 
 function app() {   // Aplicação
 
-    console.log()
-    console.log()
-    console.log()
+    fourSpacing()
     console.log('          - BANCO GENÉRICO - ')
-    console.log()
-    console.log()
-    console.log()
-    console.log()
-    console.log()
-    console.log()
+    fourSpacing()
 
     getLogin()
 
     while (!usuario) {
-        console.log()
-        console.log()
-        console.log()
-        console.log()
+        fourSpacing()
         console.log("          Usuário não encontrado... ")
-        console.log()
-        console.log()
+        twoSpacing()
 
         getLogin()
     }
 
-    console.log()
-    console.log()
+    fourSpacing()
     console.log("          Bem Vindo ", usuario.nome + " " + usuario.sobrenome)
-    console.log()
-    console.log()
-    console.log()
+    twoSpacing()
 
     while (!sair) {
         mainMenu()
