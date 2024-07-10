@@ -35,6 +35,7 @@ function mainMenu() {   // Função do Menu Inicial
     console.log("          4 - Transferências")
     console.log("          5 - Empréstimo")
     console.log("          6 - Atendimento")
+    console.log("          7 - Sair")
     console.log()
     console.log()
 
@@ -89,12 +90,21 @@ function widrawing(usuario) {   // Função de Saque
     console.log()
     const confirmacao = prompt("          ")
 
-    if (confirmacao === "sim") {
+    if (confirmacao === "sim" && saque < usuario.saldo) {
         return usuario.saldo = (+usuario.saldo) - (+saque)
+    }
+
+    if (saque > usuario.saldo) {
+        return (
+            console.log(),
+            console.log(),
+            console.log(),
+            console.log("          Saldo insuficiente...")
+        )
     }
 }
 
-function showingBalance(usuario) {
+function showingBalance(usuario) {   // Função de Consulta do Saldo
     console.log()
     console.log()
     console.log()
@@ -102,92 +112,95 @@ function showingBalance(usuario) {
     console.log("          Saldo")
     console.log()
     console.log()
-    console.log("          " + usuario.nome + ", o valor total em sua conta é R$ " +usuario.saldo)
+    console.log("          " + usuario.nome + ", o valor total em sua conta é R$ " + usuario.saldo)
     console.log()
     console.log()
     console.log()
 }
 
-function menuRouter(opcao) {
-    if(opcao === "1") {
+function menuRouter(opcao) {   // Função de Roteamento do Menu
+    if (opcao === "1") {
         return depositing(usuario)
     }
-    
-    if(opcao === "2") {
+
+    if (opcao === "2") {
         return widrawing(usuario)
     }
-    
-    if(opcao === "3") {
+
+    if (opcao === "3") {
         return showingBalance(usuario)
     }
 }
 
-function returning() {   // Função de Retorno ao Menu
-    console.log()
-    console.log()
-    console.log()
-    console.log()
-    console.log("          O que você deseja fazer agora?")
-    console.log()
-    console.log("          1 - Retornar ao Menu Principal")
-    console.log("          2 - Sair")
-    console.log()
-    console.log()
-    const retorno = prompt("          ")
+function returning(opcao) {   // Função de Retorno ao Menu
 
-    if (retorno === "2") {
+    if (opcao === "7") {
         return sair = true
+    } else {
+        console.log()
+        console.log()
+        console.log()
+        console.log()
+        console.log()
+        console.log()
+        console.log("          O que você deseja fazer agora?")
+        console.log()
+        console.log("          1 - Retornar ao Menu Principal")
+        console.log("          2 - Sair")
+        console.log()
+        console.log()
+        const retorno = prompt("          ")
+
+        if (retorno === "2") {
+            return sair = true
+        }
     }
+
 }
 
 
-// Saudação
+function app() {   // Aplicação
 
-console.log()
-console.log()
-console.log()
-console.log('          - BANCO GENÉRICO - ')
-console.log()
-console.log()
-console.log()
-console.log()
-console.log()
-console.log()
-
-getLogin()
-
-while(!usuario) {
+    console.log()
+    console.log()
+    console.log()
+    console.log('          - BANCO GENÉRICO - ')
     console.log()
     console.log()
     console.log()
     console.log()
-    console.log("          Usuário não encontrado... ")
     console.log()
     console.log()
 
     getLogin()
+
+    while (!usuario) {
+        console.log()
+        console.log()
+        console.log()
+        console.log()
+        console.log("          Usuário não encontrado... ")
+        console.log()
+        console.log()
+
+        getLogin()
+    }
+
+    console.log()
+    console.log()
+    console.log("          Bem Vindo ", usuario.nome + " " + usuario.sobrenome)
+    console.log()
+    console.log()
+    console.log()
+
+    while (!sair) {
+        mainMenu()
+
+        menuRouter(opcao)
+
+        returning(opcao)
+    }
+
 }
 
-console.log()
-console.log()
-console.log("          Bem Vindo ", usuario.nome + " " + usuario.sobrenome)
-console.log()
-console.log()
-console.log()
-
-mainMenu()
-
-menuRouter(opcao)
-
-returning()
-
-while(!sair) {
-    mainMenu()
-
-    menuRouter(opcao)
-
-    returning()
-}
-
-
-
+app()
