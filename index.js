@@ -58,7 +58,7 @@ function depositing(usuario) {   // Função de Deposito
     twoSpacing()
     const deposito = prompt("          ")
     twoSpacing()
-    console.log("          Você confirma o valor R$ " + deposito)
+    console.log("          Você confirma o valor R$ " + deposito + "?")
     console.log()
     console.log("          Digite “sim” ou “não” para continuar")
     console.log()
@@ -78,7 +78,7 @@ function widrawing(usuario) {   // Função de Saque
     twoSpacing()
     const saque = prompt("          ")
     twoSpacing()
-    console.log("          Você confirma o valor R$ " + saque)
+    console.log("          Você confirma o valor R$ " + saque + "?")
     console.log()
     console.log("          Digite “sim” ou “não” para continuar")
     console.log()
@@ -126,7 +126,7 @@ function transfering(usuario) {   // Função de Transferência
 
     if (usuarioRecebedor) {
         twoSpacing()
-        console.log("          Você confirma a tranferência de R$ " + transferencia + " para " + usuarioRecebedor.nome + " " + usuarioRecebedor.sobrenome)
+        console.log("          Você confirma a tranferência de R$ " + transferencia + " para " + usuarioRecebedor.nome + " " + usuarioRecebedor.sobrenome + "?")
         console.log()
         console.log("          Digite “sim” ou “não” para continuar")
         console.log()
@@ -168,7 +168,7 @@ function getLoan(usuario) {   // Função de Empréstimo
         console.log()
         const emprestimo = prompt("          ")
         twoSpacing()
-        console.log("          Você confirma a solicitação de emprestimo de R$ " + emprestimo)
+        console.log("          Você confirma a solicitação de emprestimo de R$ " + emprestimo + "?")
         console.log()
         console.log("          Digite “sim” ou “não” para continuar")
         console.log()
@@ -196,6 +196,12 @@ function getContacts() {
     console.log()
     console.log("          Telefone: 0800 800 0008")
     console.log()
+}
+
+function toThank(){
+    twoSpacing()
+    console.log("          Obrigado pela sua preferência. Volte sempre! :D")
+    twoSpacing()
 }
 
 function menuRouter(opcao) {   // Função de Roteamento do Menu
@@ -227,6 +233,7 @@ function menuRouter(opcao) {   // Função de Roteamento do Menu
 function returning(opcao) {   // Função de Retorno ao Menu
 
     if (opcao === "7") {
+        toThank()
         return sair = true
     } else {
         fourSpacing()
@@ -238,6 +245,7 @@ function returning(opcao) {   // Função de Retorno ao Menu
         const retorno = prompt("          ")
 
         if (retorno === "2") {
+            toThank()
             return sair = true
         }
     }
